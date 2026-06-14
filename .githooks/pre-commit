@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# 防止把私钥 / 助记词 / API Key / .env 等敏感信息提交进库。
+# clone 本仓库后请执行一次：git config core.hooksPath .githooks
+set -uo pipefail
+
+staged=$(git diff --cached --name-only --diff-filter=ACM)
+fail=0
+
+# 1. 拦截 .env 类文件（放行 .env.example）
+bad_env=$(echo "$staged" | grep -E '(^|/)\.env($|\.)' | grep -v '\.env\.example$' || true)
+if [ -n "$bad_env" ]; then
+  echo "❌ 检测到 .env 文件被加入提交：" >&2
+  echo "$bad_env" >&2
+  fail=1
+fi
+
+# 2. 扫描暂存内容里的高危密钥模式
+hits=$(git diff --cached -U0 --diff-filter=ACM -- . ':(exclude).githooks/**' ':(exclude)*.env.example' | grep -nE \
+  '(-----BEGIN [A-Z ]*PRIVATE KEY-----|0x[a-fA-F0-9]{64}|sk-[A-Za-z0-9]{20,}|croo_sk_[A-Za-z0-9]{10,}|PRIVATE_KEY=.+|MNEMONIC=.+)' \
+  || true)
+if [ -n "$hits" ]; then
+  echo "❌ 检测到疑似私钥/助记词/API Key，已阻止提交：" >&2
+  echo "$hits" >&2
+  echo "→ 请把密钥移入 .env（已被忽略）。若确为误报（如交易哈希），用 git commit --no-verify 跳过。" >&2
+  fail=1
+fi
+
+[ "$fail" -eq 0 ] && echo "✅ 密钥扫描通过"
+exit $fail

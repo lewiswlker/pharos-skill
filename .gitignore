@@ -1,0 +1,53 @@
+# ===== Secrets: never commit (security critical) =====
+# Environment files
+.env
+.env.*
+!.env.example
+# Private keys / certificates / keystores
+*.key
+*.pem
+*.p12
+*.keystore
+keystore/
+# Mnemonics / wallets / seeds
+*mnemonic*
+mnemonic.txt
+seed*.txt
+wallet.json
+private*.json
+# Generic secret locations
+secrets/
+.secrets/
+credentials*
+*.credentials
+
+# ===== Node =====
+node_modules/
+npm-debug.log*
+pnpm-debug.log*
+yarn-error.log*
+
+# ===== Python =====
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+
+# ===== Build artifacts =====
+dist/
+build/
+out/
+cache/
+artifacts/
+
+# ===== Local runtime state =====
+.spent.json
+
+# ===== System / editor =====
+.DS_Store
+.idea/
+.vscode/
+*.log
