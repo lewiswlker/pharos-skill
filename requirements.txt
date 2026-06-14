@@ -1,0 +1,7 @@
+web3>=6.15,<8
+eth-account>=0.11
+py-solc-x>=2.0
+fastapi>=0.110
+uvicorn>=0.29
+requests>=2.31
+python-dotenv>=1.0

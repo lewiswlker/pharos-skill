@@ -1,0 +1,21 @@
+{
+  "networks": [
+    {
+      "name": "atlantic-testnet",
+      "rpcUrl": "https://atlantic.dplabs-internal.com",
+      "chainId": 688689,
+      "explorerUrl": "https://atlantic.pharosscan.xyz/",
+      "networkIdentifier": "eip155:688689",
+      "nativeToken": "PHRS"
+    },
+    {
+      "name": "mainnet",
+      "rpcUrl": "https://rpc.pharos.xyz",
+      "chainId": 1672,
+      "explorerUrl": "https://www.pharosscan.xyz/",
+      "networkIdentifier": "eip155:1672",
+      "nativeToken": "PROS"
+    }
+  ],
+  "defaultNetwork": "atlantic-testnet"
+}
