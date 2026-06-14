@@ -1,11 +1,14 @@
 # x402-pharos-autopay
 
-An **Agent Skill** that lets AI agents autonomously pay for resources on the
-**Pharos Atlantic testnet** using the [x402](https://github.com/coinbase/x402)
-HTTP-payment protocol — with real on-chain settlement (EIP-3009), an on-chain
-**spending ledger**, and **budget guardrails**.
+[![CI](https://github.com/lewiswlker/pharos-skill/actions/workflows/ci.yml/badge.svg)](https://github.com/lewiswlker/pharos-skill/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
-Built for the Pharos *Skill-to-Agent Dual Cascade Hackathon* (Phase 1: Skill).
+An Agent Skill for paying [x402](https://github.com/coinbase/x402) `HTTP 402`
+resources on the Pharos Atlantic testnet. The skill reads the price quote, checks
+a spending budget, signs an EIP-3009 transfer authorization, settles it on-chain
+through a facilitator, and records the payment in an on-chain ledger.
+
+Built for the Pharos Skill-to-Agent Dual Cascade Hackathon (Phase 1: Skill).
 
 ## What it does
 
@@ -20,15 +23,15 @@ price quote. This skill teaches the agent to:
 4. **Record the receipt** in an on-chain `PaymentLedger`, building a queryable,
    auditable spending history.
 
-## Highlights
+## Features
 
-- **Batteries included** — ships its own EIP-3009 test stablecoin (`TestUSD`) and
-  a one-command facilitator, so there is nothing external to procure.
-- **Agentic** — budget guardrails and an autonomous pay/skip decision, not just a
-  passive payment wall.
-- **On-chain by design** — token deploy, ledger deploy, settlement transfers and
-  ledger records all produce verifiable transactions on Atlantic testnet.
-- **Composable** — the same capabilities compose into a full agent for Phase 2.
+- Ships its own EIP-3009 test stablecoin (`TestUSD`) and a one-command
+  facilitator, so there is nothing external to set up.
+- Checks a per-call cap and a cumulative cap before signing, and skips a call
+  that would exceed the budget instead of paying it.
+- Token deploy, ledger deploy, settlement transfers and ledger records are all
+  real transactions on Atlantic testnet.
+- The scripts are reused by a full agent in Phase 2.
 
 ## Architecture
 
@@ -96,4 +99,4 @@ records the payment on the ledger — the same flow that runs on Pharos.
 
 ## License
 
-MIT — see [LICENSE](./LICENSE).
+MIT. See [LICENSE](./LICENSE).
