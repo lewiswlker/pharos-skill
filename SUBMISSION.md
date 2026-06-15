@@ -100,9 +100,10 @@ Transactions:
 | --- | --- |
 | Deploy TestUSD (EIP-3009) | [0x9c448e…1accc](https://atlantic.pharosscan.xyz/tx/0x9c448ec298b636f610da256d4fea5920ebed10a16ce5eb13e180dc491671accc) |
 | Deploy PaymentLedger | [0xd869e8…b08d3](https://atlantic.pharosscan.xyz/tx/0xd869e87d0d5023a21e63f202fbc5e810a7284428b431dfb616920adee2ab08d3) |
-| Settle payment (transferWithAuthorization) | [0xb3cea6…68747](https://atlantic.pharosscan.xyz/tx/0xb3cea61ca330239eb76a5b723db6cd9dd4a32a3c2b0c94bc1d9ec9a0dd368747) |
-| Record receipt on PaymentLedger | _re-running after a nonce fix_ |
+| Settle payment (transferWithAuthorization) | [0x8759f0…7ee63](https://atlantic.pharosscan.xyz/tx/0x8759f0ee6f4e87f9e939c92465d13fdf8ca58a08a4dd2c25f5cd34ae6647ee63) |
+| Record receipt on PaymentLedger | [0xa7b5d5…73cf6d](https://atlantic.pharosscan.xyz/tx/0xa7b5d55787999d5517019513d6e124bb62549d50929406ee17819fe71373cf6d) |
 
 The settlement transaction is an EIP-3009 `transferWithAuthorization` that moved
 0.10 TUSD from the agent to the seller, with the contract verifying the agent's
-signature itself.
+signature itself. The receipt is the first entry in the on-chain
+`PaymentLedger`: `totalReceipts() = 1`, `totalSpent(agent, TUSD) = 0.10`.
