@@ -40,6 +40,9 @@ Deploying contracts and recording payments costs a small amount of gas.
 
 ## 5. Deploy the contracts
 
+> Already have `TUSD_ADDRESS` and `LEDGER_ADDRESS` in `.env`? The contracts are
+> already deployed. Skip this step and continue with `pay.md`.
+
 ```bash
 python scripts/deploy.py
 ```
