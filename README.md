@@ -49,6 +49,23 @@ price quote. This skill teaches the agent to:
         Pharos Atlantic testnet · chainId 688689
 ```
 
+## On-chain run
+
+Deployed and exercised on Pharos Atlantic testnet (chainId 688689):
+
+- TestUSD (EIP-3009): [`0x436Bb3…2f87Bd`](https://atlantic.pharosscan.xyz/address/0x436Bb3948e06A424F93109d76f8a22b8DC2f87Bd)
+- PaymentLedger: [`0xe464E3…7A155C`](https://atlantic.pharosscan.xyz/address/0xe464E30a9287A8E48E43148712e30611ad7A155C)
+
+| Step | Transaction |
+| --- | --- |
+| Deploy TestUSD | [view](https://atlantic.pharosscan.xyz/tx/0x9c448ec298b636f610da256d4fea5920ebed10a16ce5eb13e180dc491671accc) |
+| Deploy PaymentLedger | [view](https://atlantic.pharosscan.xyz/tx/0xd869e87d0d5023a21e63f202fbc5e810a7284428b431dfb616920adee2ab08d3) |
+| Settle payment (EIP-3009 `transferWithAuthorization`) | [view](https://atlantic.pharosscan.xyz/tx/0xb3cea61ca330239eb76a5b723db6cd9dd4a32a3c2b0c94bc1d9ec9a0dd368747) |
+| Record receipt on PaymentLedger | _re-running after a nonce fix_ |
+
+The settlement moved 0.10 TUSD from the agent to the seller, with TestUSD
+verifying the signature on-chain.
+
 ## Repository layout
 
 ```
