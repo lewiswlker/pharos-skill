@@ -133,7 +133,7 @@ def send_tx(w3: Web3, account: Account, func, value: int = 0):
     tx = func.build_transaction(
         {
             "from": account.address,
-            "nonce": w3.eth.get_transaction_count(account.address),
+            "nonce": w3.eth.get_transaction_count(account.address, "pending"),
             "chainId": w3.eth.chain_id,
             "gasPrice": w3.eth.gas_price,
             "value": value,
@@ -154,7 +154,7 @@ def deploy_contract(w3: Web3, account: Account, abi: list, bytecode: str, *args)
     tx = contract.constructor(*args).build_transaction(
         {
             "from": account.address,
-            "nonce": w3.eth.get_transaction_count(account.address),
+            "nonce": w3.eth.get_transaction_count(account.address, "pending"),
             "chainId": w3.eth.chain_id,
             "gasPrice": w3.eth.gas_price,
         }

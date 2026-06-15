@@ -87,12 +87,22 @@ The same two checks run in CI on every push (see the badge in `README.md`).
 
 ## On-chain activity
 
-The deploy, settle, and record steps produce real transactions on Atlantic
-testnet. Explorer links from a funded run will be listed here:
+Deployed and exercised on Pharos Atlantic testnet (chainId 688689).
+
+Contracts:
+
+- TestUSD (EIP-3009): `0x436Bb3948e06A424F93109d76f8a22b8DC2f87Bd`
+- PaymentLedger: `0xe464E30a9287A8E48E43148712e30611ad7A155C`
+
+Transactions:
 
 | Step | Transaction |
 | --- | --- |
-| Deploy TestUSD (EIP-3009) | _to be added_ |
-| Deploy PaymentLedger | _to be added_ |
-| Settle payment (transferWithAuthorization) | _to be added_ |
-| Record receipt | _to be added_ |
+| Deploy TestUSD (EIP-3009) | [0x9c448e…1accc](https://atlantic.pharosscan.xyz/tx/0x9c448ec298b636f610da256d4fea5920ebed10a16ce5eb13e180dc491671accc) |
+| Deploy PaymentLedger | [0xd869e8…b08d3](https://atlantic.pharosscan.xyz/tx/0xd869e87d0d5023a21e63f202fbc5e810a7284428b431dfb616920adee2ab08d3) |
+| Settle payment (transferWithAuthorization) | [0xb3cea6…68747](https://atlantic.pharosscan.xyz/tx/0xb3cea61ca330239eb76a5b723db6cd9dd4a32a3c2b0c94bc1d9ec9a0dd368747) |
+| Record receipt on PaymentLedger | _re-running after a nonce fix_ |
+
+The settlement transaction is an EIP-3009 `transferWithAuthorization` that moved
+0.10 TUSD from the agent to the seller, with the contract verifying the agent's
+signature itself.
